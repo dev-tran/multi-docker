@@ -11,13 +11,13 @@ script:
 after_success:
   - docker build -t dt5513/multi-client ./client
   - docker build -t dt5513/multi-nginx ./nginx
-  - docker build -t d5513/multi-server ./server
+  - docker build -t dt5513/multi-server ./server
   - docker build -t dt5513/multi-worker ./worker
   # Take those images and push to docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push dt5513/multi-client
   - docker push dt5513/multi-nginx
-  - docker push d5513/multi-server
+  - docker push dt5513/multi-server
   - docker push dt5513/multi-worker
 
 deploy:
